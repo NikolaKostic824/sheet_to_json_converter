@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #31313e;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-bottom: 120px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6; /* Smanjena providnost za vizuelni indikator */
+  cursor: not-allowed; /* Kursor u obliku zabrane */
+}
+
+.logo {
+  margin-top: 55px;
+}
+
+.title {
+  color: #fff;
+}
+
+#container {
+  overflow-y: hidden;
+
+}
+#excelFileInput {
+  display: none; /* Sakrij osnovni input element */
+}
+
+.file-indicator {
+  color: #f1592a;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+.custom-file-input {
+  display: inline-block;
+  background-color: #f1592a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.custom-file-input:hover {
+  background-color: #f1592a;
+}
+
+.custom-file-label {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #31313e;
+  color: #f1592a;
+  cursor: pointer;
+  border: 3px solid #f1592a;
+}
+
+.custom-file-label:hover {
+  background-color: #f1592a;
+  color: #fff;
+}
+
+#container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin-top: 150px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f1592a;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.row input[type="text"],
+.row select {
+  flex: 1;
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.row button {
+  background-color: #31313e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+
+#addRow,
+#download-btn,
+#automatic-download-btn {
+  background-color: #f1592a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  text-transform: uppercase;
+}
+#download-btn,
+#automatic-download-btn {
+  max-width: 600px;
+}
+#seeRowsButton {
+  background-color: #f1592a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 100%;
+
+}
+
+.key-value-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #31313e;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 3px solid #f1592a;
+}
+
+.key-value-element button.delete-button {
+  background-color: #f1592a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}

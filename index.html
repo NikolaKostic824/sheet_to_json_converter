@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sheet to JSON Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <img src="./assets/logo_3.png" alt="" class="logo" /> -->
+    <h1 class="title">Sheet to JSON Generator</h1>
+    <!-- File input field reads only xls and xlsx files -->
+    <input
+      type="file"
+      id="excelFileInput"
+      accept=".xlsx, .xls"
+      class="custom-file-input"
+    />
+
+    <label class="custom-file-label" for="excelFileInput"
+      >Choose Excel File</label
+    >
+    <span id="fileIndicator" class="file-indicator">No file selected</span>
+    <button disabled id="automatic-download-btn">automatic download</button>
+
+    <div id="container">
+      <div id="rows"></div>
+      <button disabled id="addRow">Add row</button>
+    </div>
+
+    <button disabled id="download-btn">download</button>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-populate/1.21.0/xlsx-populate.js"
+      integrity="sha512-X/JykS+mdNnHIcxWnJuELXmjgMKUqkFij0rE/umXosl0ZZITMLaBPjR/hCtDntA7f94VVoXpUsKuJ6GtbUDKJw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
