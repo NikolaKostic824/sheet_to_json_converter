@@ -33,3 +33,21 @@ This project provides a simple web-based tool for converting Excel files to JSON
    ```bash
    git clone https://github.com/your-username/excel-to-json-converter.git
    cd excel-to-json-converter
+
+
+   Open index.html in a Browser:
+
+Open the project folder and launch the index.html file in your preferred web browser.
+Use the Tool:
+
+Add rows, choose an Excel file, configure fields, and download your JSON files.
+Technologies Used
+HTML
+CSS
+JavaScript
+XlsxPopulate - Library for reading and writing Excel files in the browser.
+Contributing
+Contributions are welcome! If you have any suggestions, improvements, or bug reports, please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
