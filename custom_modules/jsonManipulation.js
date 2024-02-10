@@ -8,10 +8,10 @@ const createJsonData = (row, addedRows) => {
     const index = value - 1;
     // Check if index is valid before accessing row
     if (index >= 0 && index < row.length) {
-      tempObj[key] = row[index];
+      jsonObj[key] = row[index];
     } else {
       // Handle invalid index (e.g., log a warning, provide a default value, etc.)
-      tempObj[key] = null;
+      jsonObj[key] = null;
     }
   }
   return jsonObj;
@@ -23,10 +23,10 @@ const createAutomaticJsonData = (row, columnNames) => {
   columnNames.forEach((e, i) => {
     // Check if index is valid before accessing row
     if (i >= 0 && i < row.length) {
-      tempObj[toCamelCase(e)] = row[i];
+      jsonObj[toCamelCase(e)] = row[i];
     } else {
       // Handle invalid index (e.g., log a warning, provide a default value, etc.)
-      tempObj[toCamelCase(e)] = null;
+      jsonObj[toCamelCase(e)] = null;
     }
   });
   return jsonObj;
