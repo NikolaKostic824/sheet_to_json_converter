@@ -1,5 +1,12 @@
 import { toCamelCase } from "./helpers.js";
 
+/**
+ * Function to create an HTML input element.
+ * @param {string} type - The type of the input element.
+ * @param {string} placeholder - The placeholder text for the input element.
+ * @param {string} className - The class name for the input element.
+ * @returns {HTMLInputElement} - The created HTML input element.
+ */
 const createHTMLInput = (type, placeholder, className) => {
   const input = document.createElement("input");
   input.type = type;
@@ -10,8 +17,12 @@ const createHTMLInput = (type, placeholder, className) => {
   return input;
 };
 
+/**
+ * Function to create an HTML row element.
+ * @param {string} customClass - The custom class for the row element.
+ * @returns {HTMLDivElement} - The created HTML row element.
+ */
 const createHTMLRow = (customClass) => {
-  // Create elements for the new row
   const row = document.createElement("div");
   if (customClass != null) {
     row.classList.add(customClass);
@@ -19,6 +30,11 @@ const createHTMLRow = (customClass) => {
   return row;
 };
 
+/**
+ * Function to create an HTML select element.
+ * @param {string} className - The class name for the select element.
+ * @returns {HTMLSelectElement} - The created HTML select element.
+ */
 const createHTMLSelect = (className) => {
   const select = document.createElement("select");
   if (className != null) {
@@ -27,6 +43,13 @@ const createHTMLSelect = (className) => {
   return select;
 };
 
+/**
+ * Function to create an HTML button element.
+ * @param {string} btnTxt - The text content of the button.
+ * @param {string} customClass - The custom class for the button element.
+ * @param {boolean} disabled - The initial disabled state of the button.
+ * @returns {HTMLButtonElement} - The created HTML button element.
+ */
 const createHTMLButton = (btnTxt, customClass, disabled) => {
   const btn = document.createElement("button");
   btn.textContent = btnTxt;
@@ -36,6 +59,20 @@ const createHTMLButton = (btnTxt, customClass, disabled) => {
   btn.disabled = disabled;
   return btn;
 };
+
+/**
+ * Function to create a delete button for a row.
+ * @param {HTMLInputElement} input - The input element associated with the row.
+ * @param {HTMLSelectElement} select - The select element associated with the row.
+ * @param {HTMLDivElement} keyValueElement - The key-value element associated with the row.
+ * @param {string} selectedValue - The selected value of the select element.
+ * @param {number[]} availableOptions - Array of available options.
+ * @param {HTMLDivElement} rowsContainer - The container element for rows.
+ * @param {Object} addedRows - Object containing added row indices.
+ * @param {Object} buttons - Object containing various buttons.
+ * @param {string[]} rowNames - Array containing row names.
+ * @returns {HTMLButtonElement} - The created delete button element.
+ */
 const createDeleteButton = (
   input,
   select,
@@ -65,12 +102,29 @@ const createDeleteButton = (
 
   return deleteButton;
 };
+
+/**
+ * Function to append HTML elements to a row.
+ * @param {HTMLDivElement} rowsContainer - The container element for rows.
+ * @param {HTMLDivElement} row - The row element to which elements will be appended.
+ * @param {HTMLInputElement} input - The input element to be appended to the row.
+ * @param {HTMLSelectElement} select - The select element to be appended to the row.
+ * @param {HTMLButtonElement} btn - The button element to be appended to the row.
+ */
 const appendHTML = (rowsContainer, row, input, select, btn) => {
   row.appendChild(input);
   row.appendChild(select);
   row.appendChild(btn);
   rowsContainer.appendChild(row);
 };
+
+/**
+ * Function to create an HTML option element.
+ * @param {string} value - The value attribute of the option.
+ * @param {string} text - The text content of the option.
+ * @param {boolean} isDisabled - The disabled state of the option.
+ * @returns {HTMLOptionElement} - The created HTML option element.
+ */
 const createHTMLOption = (value, text, isDisabled) => {
   const option = document.createElement("option");
   option.value = value;
@@ -81,13 +135,26 @@ const createHTMLOption = (value, text, isDisabled) => {
   option.dataset.rowName = text;
   return option;
 };
-// Function to remove elements of a row
+
+/**
+ * Function to remove elements of a row.
+ * @param {HTMLDivElement} row - The row element from which elements will be removed.
+ * @param {HTMLInputElement} input - The input element to be removed.
+ * @param {HTMLSelectElement} select - The select element to be removed.
+ * @param {HTMLButtonElement} btn - The button element to be removed.
+ */
 const removeRowElements = (row, input, select, btn) => {
   row.removeChild(input);
   row.removeChild(select);
   row.removeChild(btn);
 };
 
+/**
+ * Function to create an HTML div element.
+ * @param {string} customClass - The custom class for the div element.
+ * @param {string} text - The text content of the div element.
+ * @returns {HTMLDivElement} - The created HTML div element.
+ */
 const createHTMLDiv = (customClass, text) => {
   const div = document.createElement("div");
   div.classList.add(customClass);
@@ -95,14 +162,29 @@ const createHTMLDiv = (customClass, text) => {
   return div;
 };
 
-//
+/**
+ * Function to create text for a row.
+ * @param {string} inputValue - The value of the input element.
+ * @param {string} selectedValue - The value of the select element.
+ * @param {Object} addedRows - Object containing added row indices.
+ * @param {string[]} rowNames - Array containing row names.
+ * @returns {string} - The created row text.
+ */
 const createRowText = (inputValue, selectedValue, addedRows, rowNames) => {
   const camelCaseInput = toCamelCase(inputValue);
   addedRows[camelCaseInput] = parseInt(selectedValue, 10);
   const rowText = `"${inputValue}": ${rowNames[addedRows[camelCaseInput] - 1]}`;
   return rowText;
 };
-// Function to create a new row
+
+/**
+ * Function to create a new row.
+ * @param {Object} buttons - Object containing various buttons.
+ * @param {HTMLDivElement} rowsContainer - The container element for rows.
+ * @param {number[]} availableOptions - Array of available options.
+ * @param {Object} addedRows - Object containing added row indices.
+ * @param {string[]} rowNames - Array containing row names.
+ */
 export const createRow = (
   buttons,
   rowsContainer,
@@ -110,25 +192,23 @@ export const createRow = (
   addedRows,
   rowNames
 ) => {
-  buttons.addRowButton.disabled = true; // Disable the "Add Row" button temporarily
+  buttons.addRowButton.disabled = true;
   const row = createHTMLRow("row");
   const select = createHTMLSelect("select-row");
   const input = createHTMLInput("text", "Input value", null);
   updateSelectOptions(select, availableOptions, rowNames);
   const confirmButton = createHTMLButton("Confirm", null, true);
 
-  // Add event listeners to input and select for validation
   input.addEventListener("input", (e) => {
     validateForm(input, select, confirmButton);
     const newValue = e.target.value.replace(/[^a-zA-Z0-9\s]/g, "");
     e.target.value = newValue;
   });
-  // validate select options
+
   select.addEventListener("change", () => {
     validateForm(input, select, confirmButton);
   });
 
-  // Handle the confirmation of the row
   confirmButton.addEventListener("click", () => {
     if (!confirmButton.disabled) {
       const selectedValue = select.value;
@@ -165,18 +245,28 @@ export const createRow = (
           availableOptions.splice(optionToRemoveIndex, 1);
         }
 
-        buttons.addRowButton.disabled = false; // Re-enable the "Add Row" button
-        buttons.downloadButton.disabled = false; // Re-enable the "Download" button
+        buttons.addRowButton.disabled = false;
+        buttons.downloadButton.disabled = Object.keys(addedRows).length === 0;
       }
     }
   });
 
-  // Append elements to the row and rows container
   appendHTML(rowsContainer, row, input, select, confirmButton);
-  validateForm(input, select, confirmButton); // Initial validation
+  validateForm(input, select, confirmButton);
 };
 
-// Function to delete row
+/**
+ * Function to delete a row.
+ * @param {HTMLDivElement} keyValueElement - The key-value element associated with the row.
+ * @param {string} inputValue - The value of the input element.
+ * @param {string} selectedValue - The value of the select element.
+ * @param {HTMLSelectElement} select - The select element associated with the row.
+ * @param {number[]} availableOptions - Array of available options.
+ * @param {HTMLDivElement} rowsContainer - The container element for rows.
+ * @param {Object} addedRows - Object containing added row indices.
+ * @param {Object} buttons - Object containing various buttons.
+ * @param {string[]} rowNames - Array containing row names.
+ */
 const deleteRow = (
   keyValueElement,
   inputValue,
@@ -194,9 +284,15 @@ const deleteRow = (
   availableOptions.sort((a, b) => a - b);
   updateSelectOptions(select, availableOptions, rowNames);
   buttons.addRowButton.disabled = false;
-  buttons.downloadButton.disabled = Object.keys(addedRows).length === 0; // Disable the "Download"
+  buttons.downloadButton.disabled = Object.keys(addedRows).length === 0;
 };
-// Function to update the options in the select element
+
+/**
+ * Function to update the options in the select element.
+ * @param {HTMLSelectElement} select - The select element to be updated.
+ * @param {number[]} availableOptions - Array of available options.
+ * @param {string[]} rowNames - Array containing row names.
+ */
 const updateSelectOptions = (select, availableOptions, rowNames) => {
   select.innerHTML = "";
   const option = createHTMLOption("", "Select an option", true);
@@ -210,7 +306,12 @@ const updateSelectOptions = (select, availableOptions, rowNames) => {
   });
 };
 
-// Function to validate the form
+/**
+ * Function to validate the form.
+ * @param {HTMLInputElement} input - The input element to be validated.
+ * @param {HTMLSelectElement} select - The select element to be validated.
+ * @param {HTMLButtonElement} confirmButton - The confirm button element.
+ */
 const validateForm = (input, select, confirmButton) => {
   const isInputValid = input.value.trim() !== "";
   const isSelectValid = select.value !== "Select an option";
